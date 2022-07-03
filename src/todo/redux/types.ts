@@ -1,29 +1,23 @@
-import { ADD_ITEM, TOGGLE_TODO, SET_FILTER } from "./actyons";
+
 import rootReducer from "./Rootreducer";
 
 
-export interface AddItemAction {
-  type: typeof ADD_ITEM;
-  nextId: number;
-  value: string;
-}
-
-export interface ToggleAction {
-  type: typeof TOGGLE_TODO;
-  id: number;
-}
-
-export interface SetFilterAction {
-  type: typeof SET_FILTER;
-  value: string;
-}
-
-export interface TodoModel {
-  id: number;
+export interface Todo {
+  id: string;
   text: string;
   completed: boolean;
 }
 
-export type TodoActionTypes = AddItemAction | ToggleAction | SetFilterAction;
+export interface TodoState {
+  id: string;
+  todos: Todo[];
+  completed: number;
+  text: string;
+}
+
+
+
+
+
 
 export type RootState = ReturnType<typeof rootReducer>;

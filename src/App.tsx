@@ -1,29 +1,27 @@
 import React from "react";
 import "./App.css";
+import { useAppSelector } from "./todo/redux/hooks";
 
-import Input from "./todo/component/input";
-import ToDoList from "./todo/component/Todolist";
-import Filter from "./todo/component/filter";
+import TodoForm from "./todo/component/TodoForm";
+import ToDoList from "./todo/component/TodoList";
+import TodoEdit from "./todo/component/TodoEdit";
+
 
 
 
 function App() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(e)
-    e.preventDefault();
-  };
+  const isShowEdit = useAppSelector((state) => state.showEdit.value);
   return (
     <>
       <div className="w-full max-w-xs m-auto mt-20">
         <div className="mb-4">
-          <form
-            onSubmit={handleSubmit}
-            className="bg-white shadow-md rounded px-8 pt-6 pb-4 mb-4"
-          >
-            <Input/>
+         
+            <TodoForm/>
             <ToDoList/>
-            <Filter/>
-          </form>
+            {isShowEdit.isShow && <TodoEdit />}
+            
+            
+         
         </div>
        
       </div>
