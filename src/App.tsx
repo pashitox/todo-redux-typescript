@@ -15,7 +15,7 @@ function App() {
     <>
       <div className="w-full max-w-xs m-auto mt-20">
         <div className="mb-4">
-         
+        <h1>Hello React</h1>
             <TodoForm/>
             <ToDoList/>
             {isShowEdit.isShow && <TodoEdit />}

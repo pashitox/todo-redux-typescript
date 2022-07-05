@@ -4,19 +4,17 @@ import rootReducer from "./Rootreducer";
 
 export interface Todo {
   id: string;
-  text: string;
+  text: string ;
+  time: string ;
   completed: boolean;
 }
 
-export interface TodoState {
-  id: string;
-  todos: Todo[];
-  completed: number;
-  text: string;
+export type TodoState = {
+  id: string;  
+  text: string | undefined;
+  time: string | undefined;
+  completed: boolean;
 }
-
-
-
 
 
 

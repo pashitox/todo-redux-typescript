@@ -4,8 +4,8 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { showEditActions } from "../redux/EditSlicer";
 import { todosActions } from "../redux/todoSlicer";
 //import { Component, CSSProperties } from 'react';
-import { Button,Modal, Form } from 'react-bootstrap';
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Button, Modal, Form } from 'react-bootstrap';
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 
 
@@ -16,9 +16,10 @@ const EditTodo: React.FC = (props) => {
 
  const todoToEdit = useAppSelector((state) => state.showEdit.value);
  const [titleToEdit, setTitleToEdit] = useState<string>(todoToEdit.titleTodo);
+ const [timeToEdit, settimeToEdit] = useState<string>(todoToEdit.timeTodo);
 const confirmHandler = () => {
    dispatch(
-     todosActions.edit({ id: todoToEdit.idTodo, text: titleToEdit })
+     todosActions.edit({ id: todoToEdit.idTodo, text: titleToEdit, time:timeToEdit, completed: true  })
    );
    dispatch(showEditActions.setCloseEdit());
  };
@@ -40,9 +41,12 @@ const confirmHandler = () => {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email address</Form.Label>
               <Form.Control
-                type="email"
-                placeholder="name@example.com"
+                type="date"
+                placeholder="ingrese su fecha"
                 autoFocus
+                value={timeToEdit}
+               onChange={(ev:any) => settimeToEdit(ev.target.value)}
+               
               />
             </Form.Group>
             <Form.Group

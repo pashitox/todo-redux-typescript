@@ -1,5 +1,5 @@
 import React from "react";
-import {useAppSelector, useAppDispatch} from "../redux/hooks";
+import {useAppSelector} from "../redux/hooks";
 import TodoItem from "./TodoItem";
 
 function TodoList () {
@@ -18,6 +18,7 @@ const TodoList = useAppSelector((state) => state.todoItems )
        key={todo.id}
        id={todo.id}
        text={todo.text}
+       time={todo.time}
        Completed={todo.completed}/>
 
       ))}

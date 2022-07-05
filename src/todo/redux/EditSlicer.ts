@@ -4,6 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface toEdit {
   idTodo: string;
   titleTodo: string;
+  timeTodo: string;
   isShow: boolean;
 }
 
@@ -15,6 +16,7 @@ const initialStateValue: isShowEdit = {
   value: {
     idTodo: "",
     titleTodo: "",
+    timeTodo: "",
     isShow: false,
   },
 };
@@ -26,6 +28,7 @@ export const showEditSlice = createSlice({
     setShowEdit: (state:any, action: PayloadAction<toEdit>) => {
       state.value.idTodo = action.payload.idTodo;
       state.value.titleTodo = action.payload.titleTodo;
+      state.value.timeTodo = action.payload.timeTodo;
       state.value.isShow = action.payload.isShow;
     },
     setCloseEdit: (state:any) => {

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 //import {RootState} from "./store";
-import { Todo, TodoState } from "./types";
+import { Todo } from "./types";
+import ls from "../component/LocalStore/LocalStore";
 
 
 
@@ -8,15 +9,22 @@ import { Todo, TodoState } from "./types";
 
 //const initialState: TodoModel[] = [];
 
-const initialState: Todo[] = [
+let todos = ls.get<Todo[]>("todos");
+
+
+
+
+todos ??= [
   {
     id:'1',
     text: 'cusco',
+    time: "2021/01/12",
     completed: false,
   },
   {
     id:'2',
-    text: 'Marica',
+    text: 'marica',
+   time: "2021/24/08",
     completed: false,
   },
 ];
@@ -25,30 +33,38 @@ const initialState: Todo[] = [
 
 const todosSlicer = createSlice({
   name:"Todos",
-  initialState,
+  initialState:(todos || []) as Todo[],
   reducers:{
     addItem: 
     (state: any, action: PayloadAction<Todo>) => {
       state.push({
         id:action.payload.id,
         text: action.payload.text,
+        time: action.payload.time,
         completed: action.payload.completed,
       });
        console.log("state",state)
+       updateLS(state);
       return state;     
     },
 
     remove: (state: any[], action: { payload: { id:string } }) => {
       state = state.filter((todo: { id: string; }) => todo.id !== action.payload.id);
-      //updateLS(state);
+      updateLS(state);
       return state;
    
     },
 
-    edit: (state: any[], action: { payload: { id: string; text: string } }) => {
+    edit: (state: any[], action: { payload: { id:string; text:string, time:string, completed: boolean } }) => {
       const todo = state.find((todo: { id: string; }) => todo.id === action.payload.id);
-      if (todo) todo.text = action.payload.text;
-     // updateLS(state);
+           console.log("Edit",todo);
+      if (todo) { todo.text = action.payload.text;
+                  todo.time = action.payload.time;
+                  todo.completed = action.payload.completed;     
+      
+      
+      }
+      updateLS(state);
       return state;
     },
 
@@ -66,9 +82,16 @@ const todosSlicer = createSlice({
 
 export const todosActions = todosSlicer.actions;
 
+//export const { Remove } = todosSlicer.actions
 
 
 export default todosSlicer.reducer
+
+function updateLS(state: Todo[]) {
+  ls.set<Todo[]>("todos", state);
+
+  
+}
 
 
 

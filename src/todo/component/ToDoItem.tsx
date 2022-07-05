@@ -8,7 +8,7 @@ import { showEditActions } from "../redux/EditSlicer";
 //import trash from "../../assets/trash-solid.svg";
 //import check from "../../assets/check-solid.svg";
 
-const TodoItem: React.FC<{ text: string; id:string; Completed: boolean }> =
+const TodoItem: React.FC<{ text: string; id:string; time:string, Completed: boolean }> =
   React.memo((props) => {
     const dispatch = useAppDispatch();
    
@@ -24,6 +24,7 @@ const TodoItem: React.FC<{ text: string; id:string; Completed: boolean }> =
        showEditActions.setShowEdit({
          idTodo: props.id,
          titleTodo: props.text,
+         timeTodo:props.time,
          isShow: true,
        })
      );
@@ -36,11 +37,19 @@ const TodoItem: React.FC<{ text: string; id:string; Completed: boolean }> =
       <li >
         <div>
           <p  >
-       
-          {props.text}
-          {props.Completed}
-            
+          Actividad: 
+          {props.text}                  
           </p>
+            
+          <p>
+          Time:
+          {props.time}
+          </p>
+          <p>
+          completed:
+          {props.Completed}
+          </p>
+         
         </div>
         <div >       
          <button  onClick={removeTodoHandler}
