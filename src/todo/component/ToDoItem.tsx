@@ -1,6 +1,6 @@
 import React from "react";
 import {useAppDispatch } from "../redux/hooks";
-
+//import {useAppSelector} from "../redux/hooks"
 import { todosActions } from "../redux/todoSlicer";
 import { showEditActions } from "../redux/EditSlicer";
 //import { showEditActions } from "../../features/isShowEdit";
@@ -8,8 +8,14 @@ import { showEditActions } from "../redux/EditSlicer";
 //import trash from "../../assets/trash-solid.svg";
 //import check from "../../assets/check-solid.svg";
 
-const TodoItem: React.FC<{ text: string; id:string; time:string, Completed: boolean }> =
+const TodoItem: React.FC<{id:string; text: string;  time:string, Completed: boolean }> =
   React.memo((props) => {
+
+   
+
+   // const TodoList = useAppSelector((state) => state.todoItems )
+   
+
     const dispatch = useAppDispatch();
    
     const removeTodoHandler = () => {
@@ -30,13 +36,17 @@ const TodoItem: React.FC<{ text: string; id:string; time:string, Completed: bool
      );
    };
 
+  // const toggleCompeleted = () =>
+  //  dispatch(todosActions.edit({ id:props.id, text:props.text, time:props.time, completed: props.Completed }));
+
    
     console.log("TodoItem Render");
 
     return (
       <li >
-        <div>
-          <p  >
+        <div >
+        {props.id}
+          <p >
           Actividad: 
           {props.text}                  
           </p>
@@ -49,6 +59,8 @@ const TodoItem: React.FC<{ text: string; id:string; time:string, Completed: bool
           completed:
           {props.Completed}
           </p>
+        
+         
          
         </div>
         <div >       

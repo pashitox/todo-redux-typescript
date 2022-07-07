@@ -9,9 +9,15 @@ import { v1 as uuidv1 } from 'uuid';
 const TodoForm = React.memo(() => {
   //Input value
   const [newTodo, setNewTodo] = useState<string>('');
+
+  const [completed, setcompleted] = useState<boolean>(); 
+
+  const [agree, setAgree] = useState(false);
+
   const [error, setError] = useState<boolean>(false); 
   const inputRef = useRef<HTMLInputElement>(null);
   const inputRef2 = useRef<HTMLInputElement>(null);
+  const inputRef3 = useRef<HTMLInputElement>(null);
   const [aggrSeeDate, setAggrSeeDate] = useState<string>("");  
   const dispatch = useAppDispatch();
 
@@ -22,11 +28,17 @@ const TodoForm = React.memo(() => {
     setNewTodo(e.target.value);
 };
 
+
 const handleTypeDAte = (event: React.ChangeEvent<HTMLInputElement>): void => {
  // setAggrDate(event.target.valueAsNumber);
- console.log(event.target.value)
+ //console.log(event.target.value)
   setAggrSeeDate(event.target.value);
 }
+
+const handleTypeCompleted = (e: ChangeEvent<HTMLInputElement>)=> {
+  console.log(e.target.value)
+  //setcompleted(e.target.value);
+};
 
 
 const addTodoHandler = (event: React.FormEvent) => {
@@ -34,6 +46,7 @@ const addTodoHandler = (event: React.FormEvent) => {
   const id = uuidv1();  
   const enteredTodo = inputRef.current!.value;
   const enteredTodo2 = inputRef2.current!.value;
+  const enteredTodo3 = inputRef3.current!.value;
   
   
 
@@ -62,12 +75,22 @@ const addTodoHandler = (event: React.FormEvent) => {
 };
 
 
+const checkboxHandler = () => {
+  // if agree === true, it will be set to false
+  // if agree === false, it will be set to true
+  setAgree(!agree);
+
+  // Don't miss the exclamation mark
+}
+
+
   return (
     
     <form onSubmit={addTodoHandler}>
       <div >
         <label htmlFor="text">        
-        </label>       
+        </label>  
+        learn react     
         <input onChange={handleTypeText}
           ref={inputRef}
           type={newTodo}
@@ -84,6 +107,20 @@ const addTodoHandler = (event: React.FormEvent) => {
           value={aggrSeeDate}
           onChange={handleTypeDAte} />
        </div>
+      <div>
+      <input 
+      type="checkbox"
+      ref={inputRef3}
+    
+      onChange={handleTypeCompleted}/> 
+      </div>
+    
+
+      <div>
+          <input type="checkbox" id="agree" onChange={checkboxHandler} />
+          
+        </div>
+
 
 
 

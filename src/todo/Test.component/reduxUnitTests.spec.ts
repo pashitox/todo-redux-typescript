@@ -1,4 +1,4 @@
-import  store  from './store';
+import  store  from '../redux/store';
 import { todosActions } from "../redux/todoSlicer";
 
 test('Updates a text and time', () => {
