@@ -37,13 +37,16 @@ const todosSlicer = createSlice({
   reducers:{
     addItem: 
     (state: any, action: PayloadAction<Todo>) => {
+
+      console.log("state",state)
       state.push({
         id:action.payload.id,
         text: action.payload.text,
         time: action.payload.time,
         completed: action.payload.completed,
+        
       });
-       console.log("state",state)
+      
        updateLS(state);
       return state;     
     },

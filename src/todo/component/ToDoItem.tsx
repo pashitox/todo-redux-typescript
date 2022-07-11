@@ -1,5 +1,6 @@
 import React from "react";
 import {useAppDispatch } from "../redux/hooks";
+import  { useState,  ChangeEvent} from 'react';
 //import {useAppSelector} from "../redux/hooks"
 import { todosActions } from "../redux/todoSlicer";
 import { showEditActions } from "../redux/EditSlicer";
@@ -14,7 +15,7 @@ const TodoItem: React.FC<{id:string; text: string;  time:string, Completed: bool
    
 
    // const TodoList = useAppSelector((state) => state.todoItems )
-   
+   const [completed, setComplete] = useState<boolean>();
 
     const dispatch = useAppDispatch();
    
@@ -36,43 +37,52 @@ const TodoItem: React.FC<{id:string; text: string;  time:string, Completed: bool
      );
    };
 
-  // const toggleCompeleted = () =>
-  //  dispatch(todosActions.edit({ id:props.id, text:props.text, time:props.time, completed: props.Completed }));
+  const toggleCompeleted = () =>
+
+         setComplete(!completed)
+
+       console.log("toogle",completed);  
+       
+      if (completed === true){     
+        dispatch(todosActions.edit({ id:props.id, text:props.text, time:props.time, completed: true }))
+
+      } else {
+        dispatch(todosActions.edit({ id:props.id, text:props.text, time:props.time, completed: false }));
+      }   
+
+    const handleTypeCompleted = (e: ChangeEvent<HTMLInputElement>)=> {
+      console.log(e.target.value)
+     // setComplete(e.target.value);
+    };
 
    
     console.log("TodoItem Render");
 
     return (
-      <li >
-        <div >
-        {props.id}
-          <p >
-          Actividad: 
-          {props.text}                  
-          </p>
-            
-          <p>
-          Time:
-          {props.time}
-          </p>
-          <p>
-          completed:
-          {props.Completed}
-          </p>
+      <li >        
         
-         
-         
-        </div>
-        <div >       
+         <label
+        style={{ textDecoration: props.Completed ? 'line-through' : undefined }} >
+          <p >            
+          Actividad: 
+          {props.text}                      
+          </p>
+         <p>          
+          Time:
+          {props.time}          
+          </p>
+        </label>        
+        Completed:
+        <input type="checkbox"          
+         onChange={handleTypeCompleted}
+        onClick={toggleCompeleted}
+        checked={props.Completed} />           
          <button  onClick={removeTodoHandler}
              >remove
          </button>
          <button  onClick={editTodoHandler}
              >edit
-         </button>
-                   
-           
-        </div>
+         </button>   
       </li>
     );
   });

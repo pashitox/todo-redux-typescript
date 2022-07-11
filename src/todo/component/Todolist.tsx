@@ -11,7 +11,7 @@ const TodoList = useAppSelector((state) => state.todoItems )
   return (
     <>
       <div >
-       <ul>
+       
       
       {Object.values(TodoList).map(( todo)=>(
        <TodoItem
@@ -21,10 +21,7 @@ const TodoList = useAppSelector((state) => state.todoItems )
        time={todo.time}
        Completed={todo.completed}/>
 
-      ))}
-
-      
-       </ul>       
+      ))}     
       </div>
     </>
   );
