@@ -3,31 +3,31 @@ import { useAppDispatch } from "../redux/hooks";
 import { todosActions } from "../redux/todoSlicer";
 import Todos  from "./todos";
 import { v1 as uuidv1 } from 'uuid';
+
+import {
+  Box,
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input
+} from "@chakra-ui/react";
 //import { time } from 'console';
-
-
 const TodoForm = React.memo(() => {
   //Input value
   const [newTodo, setNewTodo] = useState<string>('');
-
-  const [completed, setcompleted] = useState<boolean>(); 
-
-  const [agree, setAgree] = useState(false);
+  //const [completed, setCompleted] = useState<boolean>();
 
   const [error, setError] = useState<boolean>(false); 
   const inputRef = useRef<HTMLInputElement>(null);
   const inputRef2 = useRef<HTMLInputElement>(null);
-  const inputRef3 = useRef<HTMLInputElement>(null);
+ // const inputRef3 = useRef<HTMLInputElement>(null);
   const [aggrSeeDate, setAggrSeeDate] = useState<string>("");  
   const dispatch = useAppDispatch();
-
-
-
-
   const handleTypeText = (e: ChangeEvent<HTMLInputElement>) => {
     setNewTodo(e.target.value);
 };
-
 
 const handleTypeDAte = (event: React.ChangeEvent<HTMLInputElement>): void => {
  // setAggrDate(event.target.valueAsNumber);
@@ -35,22 +35,12 @@ const handleTypeDAte = (event: React.ChangeEvent<HTMLInputElement>): void => {
   setAggrSeeDate(event.target.value);
 }
 
-const handleTypeCompleted = (e: ChangeEvent<HTMLInputElement>)=> {
-  console.log(e.target.value)
-  //setcompleted(e.target.value);
-};
-
 
 const addTodoHandler = (event: React.FormEvent) => {
   event.preventDefault();
   const id = uuidv1();  
   const enteredTodo = inputRef.current!.value;
   const enteredTodo2 = inputRef2.current!.value;
-  const enteredTodo3 = inputRef3.current!.value;
-  
-  
-
-  //console.log("enterado",enteredTodo);
 
   if (enteredTodo.trim().length === 0) {
     setError(true);
@@ -59,35 +49,55 @@ const addTodoHandler = (event: React.FormEvent) => {
     setError(true);
     return;
   }
-
   setError(false);
 
-  const newTodo: Todos = {
-    id,
-    text: enteredTodo,
-    time: enteredTodo2,
-    completed: false,
-  };
-  console.log("prueva",newTodo);
-  dispatch(todosActions.addItem(newTodo));
+ const newTodo: Todos = {
+   id,
+   text: enteredTodo,
+   time: enteredTodo2,
+   completed: true ,
+ };
+
+
+ //   
+dispatch(todosActions.addItem(newTodo));
+  //console.log("prueva",newTodo);
+ 
   inputRef.current!.value = "";
   inputRef2.current!.value = "";
+ // inputRef3.current!.value = "";
 };
 
 
-const checkboxHandler = () => {
-  // if agree === true, it will be set to false
-  // if agree === false, it will be set to true
-  setAgree(!agree);
 
-  // Don't miss the exclamation mark
-}
 
 
   return (
+    <Flex
+    height="100vh"
+    justifyContent="center"
+    alignItems="center"
+    flexDirection="column"
+  >
+
     
     <form onSubmit={addTodoHandler}>
       <div >
+      <Box width="50%">
+        <Box
+         
+          flexDirection="row"
+          justifyContent="space-between"
+          marginBottom="20px"
+        >
+          <Heading color="white" data-testid="header">
+          
+          </Heading>
+        </Box>
+        </Box>
+
+
+
         <label htmlFor="text">        
         </label>  
         learn react     
@@ -108,31 +118,16 @@ const checkboxHandler = () => {
           onChange={handleTypeDAte} />
        </div>
       <div>
-      <input 
-      type="checkbox"
-      ref={inputRef3}
-    
-      onChange={handleTypeCompleted}/> 
-      </div>
-    
-
-      <div>
-          <input type="checkbox" id="agree" onChange={checkboxHandler} />
-          
-        </div>
-
-
-
-
-      <div>
         <button
           type="submit" >
           Add new task
         </button>
       </div>
-    </form>
-      
+    </form>   
+   </Flex> 
+       
   );
+  
 });
 
 export default TodoForm;
@@ -146,3 +141,12 @@ export default TodoForm;
 //minDate={today}
 //todayButton={"Today"}
 ///>
+
+//<div>
+//<input 
+//onChange={handleTypeCompleted}
+//type="checkbox"             
+// ref={inputRef3}
+//onClick={checkboxHandler} />          
+//</div>
+
