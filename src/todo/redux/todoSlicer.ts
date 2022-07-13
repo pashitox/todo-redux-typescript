@@ -15,18 +15,7 @@ let todos = ls.get<Todo[]>("todos");
 
 
 todos ??= [
-  {
-    id:'1',
-    text: 'cusco',
-    time: "2021/01/12",
-    completed: false,
-  },
-  {
-    id:'2',
-    text: 'marica',
-   time: "2021/24/08",
-    completed: false,
-  },
+  
 ];
 
 

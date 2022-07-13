@@ -10,20 +10,13 @@ import TodoList from "./todo/component/TodoList"
 
 
 const MainRoutes = () => (
-	<Routes>
-		
-
-		{/** Public Routes */}
-		{/** Wrap all Route under PublicRoutes element */}
-		
-        <Route path="tab" element={<Tab />}>					
+	<Routes>		
+        <Route path="/" element={<Tab />}>					
 			<Route path="tab" element={<Tab />} />					
-		</Route>
+            </Route>
             <Route path="/TodoForm" element={<TodoForm />} />
             <Route path="/TodoList" element={<TodoList />} />
-		
-		{/** Permission denied route */}
-		
+      
 	</Routes>
 )
 

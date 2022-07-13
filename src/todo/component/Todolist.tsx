@@ -13,7 +13,7 @@ const TodoList = useAppSelector((state) => state.todoItems )
       <div >
        
       
-      {Object.values(TodoList).map(( todo)=>(
+      {TodoList.map(( todo)=>(
        <TodoItem
        key={todo.id}
        id={todo.id}

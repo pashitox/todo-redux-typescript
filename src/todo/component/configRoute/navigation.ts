@@ -1,20 +1,20 @@
 export const navigationItems = {
   sidebar: [
     {
-      name: 'tab',
+      name: 'Used Tecnologies',
       to: '/tab', 
       text: 'tab',
       
-    },
-    {
-      name: 'Todo List ',
-      to: '/TodoList', 
-      text:'Todolist'
     },
      {
       name: 'Todo form ',
       to: '/TodoForm', 
       text:'TodoForm'
+    },
+    {
+      name: 'Todo List ',
+      to: '/TodoList', 
+      text:'Todolist'
     },
     
    

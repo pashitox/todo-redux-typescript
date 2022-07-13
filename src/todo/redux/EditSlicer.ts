@@ -5,6 +5,7 @@ interface toEdit {
   idTodo: string;
   titleTodo: string;
   timeTodo: string;
+  completed: boolean;
   isShow: boolean;
 }
 
@@ -17,6 +18,7 @@ const initialStateValue: isShowEdit = {
     idTodo: "",
     titleTodo: "",
     timeTodo: "",
+    completed: false,
     isShow: false,
   },
 };
@@ -29,6 +31,7 @@ export const showEditSlice = createSlice({
       state.value.idTodo = action.payload.idTodo;
       state.value.titleTodo = action.payload.titleTodo;
       state.value.timeTodo = action.payload.timeTodo;
+      state.value.completed = action.payload.completed;
       state.value.isShow = action.payload.isShow;
     },
     setCloseEdit: (state:any) => {

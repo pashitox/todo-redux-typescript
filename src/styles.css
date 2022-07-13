@@ -55,7 +55,7 @@ body{
 }
 .sidebar{
     width:200px;
-    background-color: #365262;
+    background-color:#ff0080;
     color: #EBF8FE;
     padding-top:200px;
     padding-left:20px;
@@ -93,6 +93,7 @@ body{
     padding-left:40px;
 }
 
+
 h1{
     color:#365262;
     font-size:30px;
@@ -120,11 +121,7 @@ h2{
 .users h1{
     margin-bottom:20px;
 }
-.users__card{
-    margin-top:40px;
-    border:1px solid #365262;
-    padding:20px;
-}
+
 .users__card p{
     margin-bottom: 10px;
 }
@@ -191,6 +188,62 @@ h2{
     margin-top:20px;
 }
 .btn-primary{
-    background-color:#365262;
+    background-color:#ff0080;
     color:white;
+    border-radius: 6px;
+   
+    font-size: 10px;
+
 }
+.center {
+    text-align: center;
+   
+  }
+
+.padding {
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+}
+.padding-list {
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+     height: 100px;
+
+  }
+
+  .padding-art {
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+     height: 100px;
+
+  }
+
+
+
+  .inner-content-list{
+    padding-top:20px;
+    padding-bottom: 50px;
+    padding-left:150px;
+    padding-right: 300px;
+    height: 100;
+    
+    
+}
+
+  .users__card{
+   
+    border:1px solid #365262;
+  }
+
+  .p-p {
+    
+    padding-right: 200px;
+    padding-left: 200px;
+   
+  }

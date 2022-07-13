@@ -1,23 +1,27 @@
 
 
 import Sidebar from './todo/component/Sidebar'
+import TodoEdit from './todo/component/TodoEdit'
 import MainRoutes from './Routes'
+import { useAppSelector } from "./todo/redux/hooks";
 
 import './styles.css'
 
 function App() {
+
+
+  const showEdit = useAppSelector((state) => state.showEdit )
   return (
-<div className="app">
-     
-     {/** Sidebar */}
-     <Sidebar/>
-
-     {/** Inner container */}
-    <MainRoutes/>
+    <div>
+   <div className="app">      
+     <Sidebar/>  
+    <MainRoutes/>  
     </div>
- 
-
-   
+    <div>
+    {showEdit.value.isShow && <TodoEdit />}
+    </div>
+    </div>
+  
   );
 }
 

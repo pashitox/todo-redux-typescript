@@ -4,37 +4,26 @@ import { todosActions } from "../redux/todoSlicer";
 import Todos  from "./todos";
 import { v1 as uuidv1 } from 'uuid';
 
-import {
-  Box,
-  Button,
-  Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input
-} from "@chakra-ui/react";
+
 //import { time } from 'console';
 const TodoForm = React.memo(() => {
   //Input value
   const [newTodo, setNewTodo] = useState<string>('');
   //const [completed, setCompleted] = useState<boolean>();
 
-  const [error, setError] = useState<boolean>(false); 
+  
   const inputRef = useRef<HTMLInputElement>(null);
   const inputRef2 = useRef<HTMLInputElement>(null);
  // const inputRef3 = useRef<HTMLInputElement>(null);
   const [aggrSeeDate, setAggrSeeDate] = useState<string>("");  
   const dispatch = useAppDispatch();
   const handleTypeText = (e: ChangeEvent<HTMLInputElement>) => {
-    setNewTodo(e.target.value);
-};
+    setNewTodo(e.target.value);};
 
 const handleTypeDAte = (event: React.ChangeEvent<HTMLInputElement>): void => {
  // setAggrDate(event.target.valueAsNumber);
  //console.log(event.target.value)
-  setAggrSeeDate(event.target.value);
-}
-
+  setAggrSeeDate(event.target.value);}
 
 const addTodoHandler = (event: React.FormEvent) => {
   event.preventDefault();
@@ -43,26 +32,22 @@ const addTodoHandler = (event: React.FormEvent) => {
   const enteredTodo2 = inputRef2.current!.value;
 
   if (enteredTodo.trim().length === 0) {
-    setError(true);
+    alert("introdusca algunas letras en el campo");
     return;
   } if (enteredTodo2.trim().length === 0) {
-    setError(true);
+    alert("introdusca algunas letras en el campo");
     return;
   }
-  setError(false);
-
+        
  const newTodo: Todos = {
    id,
    text: enteredTodo,
    time: enteredTodo2,
    completed: true ,
  };
-
-
  //   
 dispatch(todosActions.addItem(newTodo));
-  //console.log("prueva",newTodo);
- 
+  //console.log("prueva",newTodo); 
   inputRef.current!.value = "";
   inputRef2.current!.value = "";
  // inputRef3.current!.value = "";
@@ -73,59 +58,44 @@ dispatch(todosActions.addItem(newTodo));
 
 
   return (
-    <Flex
-    height="100vh"
-    justifyContent="center"
-    alignItems="center"
-    flexDirection="column"
-  >
-
     
+    <div className="inner-content">
+    <h2 className="center padding">Add a new text and Time 🦉</h2>
+    
+    <div  className="row-section__inner"  >
     <form onSubmit={addTodoHandler}>
-      <div >
-      <Box width="50%">
-        <Box
-         
-          flexDirection="row"
-          justifyContent="space-between"
-          marginBottom="20px"
-        >
-          <Heading color="white" data-testid="header">
-          
-          </Heading>
-        </Box>
-        </Box>
-
-
-
-        <label htmlFor="text">        
-        </label>  
-        learn react     
+    <div  className="form-row">
+     <div  className="input-group">  
+     <label htmlFor="text">Text</label>         
         <input onChange={handleTypeText}
           ref={inputRef}
           type={newTodo}
-          placeholder="New todo"
-          className={`w-[85%] h-full p-2 border rounded-r-sm outline-none block ${
-            error ? "border-red-500" : "border-slate-400"
-          }`}       
-        />   
+          placeholder="New todo"/>   
         </div>
-       <div>
+       <div className="input-group">
+       <label htmlFor="time">Time</label>
        <input          
           type="date"
           ref={inputRef2}
           value={aggrSeeDate}
           onChange={handleTypeDAte} />
        </div>
-      <div>
+      <div className="input-group">
         <button
+         className="btn-primary"
           type="submit" >
-          Add new task
+          Send
         </button>
       </div>
-    </form>   
-   </Flex> 
-       
+      </div>
+    </form>
+    </div>   
+    </div>  
+    
+    
+
+
+    
   );
   
 });
