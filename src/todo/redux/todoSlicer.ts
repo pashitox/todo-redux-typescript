@@ -3,20 +3,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Todo } from "./types";
 import ls from "../component/LocalStore/LocalStore";
 
-
-
-
-
 //const initialState: TodoModel[] = [];
 
 let todos = ls.get<Todo[]>("todos");
-
-
-
-
-todos ??= [
-  
-];
+todos ??= [];
 
 
 
