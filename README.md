@@ -2,6 +2,26 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
 
+Tecnologies used in proyect
+
+ React:
+  React makes it painless to create interactive UIs. Design simple views for each state in your application
+ 
+  
+Jest and Enzyme:
+  Tools like Jest, Mocha and Enzyme all aim to provide real gains in testing your application.
+  
+   Redux
+  It helps you write applications that behave consistently, run in different environments (client, server, and native).
+
+ 
+  Window.localStorage:
+   The localStorage read-only property of the window interface allows you to access a Storage object for the Document's origin; 
+  
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
