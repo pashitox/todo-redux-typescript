@@ -6,21 +6,11 @@ import { createRoot } from "react-dom/client";
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from "./App";
-//import { ChakraProvider } from '@chakra-ui/react';
+
 
 import { BrowserRouter } from "react-router-dom";
 
-// 2. Extend the theme to include custom colors, fonts, etc
 
-//const theme = extendTheme({
-//  styles: {
-//    global: {
-//      'html, body': {
-//        backgroundColor: 'rgb(26,32,44)',
-//      },
-//    },
-//  },
-//});
 
 
 const container = document.getElementById("root")!;
@@ -32,8 +22,7 @@ root.render(
     
     <BrowserRouter>
     <App />
-  </BrowserRouter>
-     
+  </BrowserRouter>     
   </Provider>
   // </React.StrictMode>
 );

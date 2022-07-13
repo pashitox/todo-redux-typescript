@@ -8,8 +8,6 @@ import { useAppSelector } from "./todo/redux/hooks";
 import './styles.css'
 
 function App() {
-
-
   const showEdit = useAppSelector((state) => state.showEdit )
   return (
     <div>
@@ -20,8 +18,7 @@ function App() {
     <div>
     {showEdit.value.isShow && <TodoEdit />}
     </div>
-    </div>
-  
+    </div>  
   );
 }
 

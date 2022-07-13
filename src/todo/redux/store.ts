@@ -15,6 +15,8 @@ const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+//nesecito aprender lo asyng
 // export type AppThunk = ThunkAction<void, RootState, null, Action<string>>;
 
 export default store;

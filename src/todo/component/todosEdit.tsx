@@ -1,7 +1,4 @@
-
-
-export interface TodosEdit {
-    
+export interface TodosEdit {    
         idTodo: string;
         titleTodo: string;
         timeTodo: string;
